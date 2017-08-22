@@ -54,7 +54,7 @@ Firebase::delete('/test/');
 ```
 
 ----
-For more options see firebase REST [documentation](https://firebase.google.com/docs/database/rest/start) 
+For more options see firebase REST [official documentation](https://firebase.google.com/docs/database/rest/start) 
 
 
 
