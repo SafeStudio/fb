@@ -1,10 +1,21 @@
 <?php declare(strict_types=1);
 
-namespace Ucha19871\FB;
+namespace SafeStudio\Firebase;
 
-class FB
+use Firebase\FirebaseLib;
+
+class Firebase
 {
 
+    /**
+     * @var string
+     */
+    private $database_url;
+
+    /**
+     * @var string
+     */
+    private $secret;
 
     public function __construct()
     {
@@ -19,7 +30,7 @@ class FB
 
     public function send()
     {
-        return new \Firebase\FirebaseLib($this->database_url, $this->secret);
+        return new FirebaseLib($this->database_url, $this->secret);
     }
 
 
@@ -43,7 +54,7 @@ class FB
      */
     public function set(string $path, array $data, array $options = [])
     {
-        return $this->send()->set($path, $data);
+        return $this->send()->set($path, $data, $options);
     }
 
     /**
@@ -68,7 +79,7 @@ class FB
      */
     public function push(string $path, array $data, array $options = [])
     {
-        return $this->send()->push($path, $data);
+        return $this->send()->push($path, $data, $options);
     }
 
     /**

@@ -1,17 +1,15 @@
 <?php
 
-
-namespace Ucha19871\FB\Facades;
-
+namespace SafeStudio\Firebase\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class FBFacades extends Facade
+class FirebaseFacades extends Facade
 {
 
     protected static function getFacadeAccessor()
     {
-        return 'FB';
+        return 'Firebase';
     }
 
 }
