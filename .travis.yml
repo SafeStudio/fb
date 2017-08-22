@@ -1,0 +1,17 @@
+language: php
+
+dist: trusty
+
+php:
+  - 7.1
+
+env:
+  - FB_DATABASE=https://something-of-the-day.firebaseio.com/
+  - FB_DATABASE_KEY=LFto4Ihvs9mUoSNgo2vKnDslKVtzX2NxnQdopS9A
+
+before_script:
+  - composer self-update
+  - composer install
+
+script: phpunit
+

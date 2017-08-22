@@ -1,25 +1,25 @@
 
 # Firebase easy REST API wrapper for Laravel
 
-[![Latest Stable Version](https://poser.pugx.org/ucha19871/fb/v/stable)](https://packagist.org/packages/ucha19871/fb) 
-[![Total Downloads](https://poser.pugx.org/ucha19871/fb/downloads)](https://packagist.org/packages/ucha19871/fb) 
-[![License](https://poser.pugx.org/ucha19871/fb/license)](https://packagist.org/packages/ucha19871/fb) 
+[![Latest Stable Version](https://poser.pugx.org/safestudio/firebase/v/stable)](https://packagist.org/packages/safestudio/firebase) 
+[![Total Downloads](https://poser.pugx.org/safestudio/firebase/downloads)](https://packagist.org/packages/safestudio/firebase) 
+[![License](https://poser.pugx.org/safestudio/firebase/license)](https://packagist.org/packages/safestudio/firebase) 
 
 ### Installation
 
 ```bash
-composer require ucha19871/fb
+composer require safestudio/firebase
 ```
 After installing composer package, add the ServiceProvider to the providers array in `config/app.php`
 
 ```php
-Ucha19871\FB\FBServiceProvider::class,
+SafeStudio\Firebase\FirebaseServiceProvider::class,
 ```
 
 Add this to your aliases for shorter code:
 
 ```php
-'FB' => Ucha19871\FB\Facades\FBFacades::class,
+'Firebase' => SafeStudio\Firebase\Facades\FirebaseFacades::class,
 ```
 
 Insert the config settings in `config/services.php` like this:
@@ -32,7 +32,7 @@ Insert the config settings in `config/services.php` like this:
 ```
 
 > You can get Firebase `secret` token like so:
-> - click on the gear icon in you Firebase Console
+> - Click on the gear icon in you Firebase Console
 > - Click Project settings
 > - Click on the Service Account tab
 > - Click on the Database Secrets link in the inner left-nav
@@ -42,15 +42,15 @@ Insert the config settings in `config/services.php` like this:
 
 ```php
 $data = ['key' => 'data' , 'key1' => 'data1']
-FB::set('/test/',$data); 
+Firebase::set('/test/',$data); 
 
-FB::get('/test/',['print'=> 'pretty']);
+Firebase::get('/test/',['print'=> 'pretty']);
 
-FB::push('/test/',$data); 
+Firebase::push('/test/',$data); 
 
-FB::update('/test/',['key1' => 'Updating data by key']); 
+Firebase::update('/test/',['key1' => 'Updating data by key']); 
 
-FB::delete('/test/'); 
+Firebase::delete('/test/'); 
 ```
 
 ----
