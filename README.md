@@ -1,9 +1,10 @@
 
 # Firebase easy REST API wrapper for Laravel
 
-[![Latest Stable Version](https://poser.pugx.org/safestudio/firebase/v/stable)](https://packagist.org/packages/safestudio/firebase) 
-[![Total Downloads](https://poser.pugx.org/safestudio/firebase/downloads)](https://packagist.org/packages/safestudio/firebase) 
-[![License](https://poser.pugx.org/safestudio/firebase/license)](https://packagist.org/packages/safestudio/firebase) 
+[![Latest Stable Version](https://poser.pugx.org/safestudio/firebase-php/v/stable)](https://packagist.org/packages/safestudio/firebase-php) 
+[![Total Downloads](https://poser.pugx.org/safestudio/firebase-php/downloads)](https://packagist.org/packages/safestudio/firebase-php) 
+[![Latest Unstable Version](https://poser.pugx.org/safestudio/firebase-php/v/unstable)](https://packagist.org/packages/safestudio/firebase-php)
+[![License](https://poser.pugx.org/safestudio/firebase-php/license)](https://packagist.org/packages/safestudio/firebase-php) 
 
 ### Installation
 
