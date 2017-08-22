@@ -1,6 +1,7 @@
 
 # Firebase easy REST API wrapper for Laravel
 
+[![Build Status](https://travis-ci.org/SafeStudio/firebase-php.svg?branch=master)](https://travis-ci.org/SafeStudio/firebase-php)
 [![Latest Stable Version](https://poser.pugx.org/safestudio/firebase-php/v/stable)](https://packagist.org/packages/safestudio/firebase-php) 
 [![Total Downloads](https://poser.pugx.org/safestudio/firebase-php/downloads)](https://packagist.org/packages/safestudio/firebase-php) 
 [![Latest Unstable Version](https://poser.pugx.org/safestudio/firebase-php/v/unstable)](https://packagist.org/packages/safestudio/firebase-php)
