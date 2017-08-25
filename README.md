@@ -66,6 +66,12 @@ Make sure this line is uncommented:
 $app->withFacades();
 ```
 
+Add this line:
+
+```php
+$app->configure('firebase');
+```
+
 Insert the environment variables in `.env` like this:
 
 ```
