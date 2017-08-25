@@ -69,7 +69,7 @@ $app->withFacades();
 Add this line:
 
 ```php
-$app->configure('firebase');
+$app->configure('services');
 ```
 
 Insert the environment variables in `.env` like this:
