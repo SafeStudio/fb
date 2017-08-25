@@ -2,7 +2,6 @@
 
 namespace SafeStudio\Firebase;
 
-use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
 class FirebaseServiceProvider extends ServiceProvider
