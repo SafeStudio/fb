@@ -1,10 +1,11 @@
 {
-  "name": "safestudio/firebase-php",
-  "description": "Firebase REST API easy wrapper for Laravel",
+  "name": "safestudio/firebase-laravel",
+  "description": "Firebase REST API easy wrapper for Laravel and Lumen",
   "license": "MIT",
   "keywords": [
     "framework",
     "laravel",
+    "lumen",
     "firebase",
     "wrapper",
     "rest",
