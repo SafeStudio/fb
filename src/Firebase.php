@@ -2,94 +2,98 @@
 
 namespace SafeStudio\Firebase;
 
-use Firebase\FirebaseLib;
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
 
 class Firebase
 {
+    /**
+     * @var array
+     */
+    private $firebase;
 
     /**
-     * @var string
+     * Firebase constructor.
+     * @throws \Exception
      */
-    private $database_url;
-
-    /**
-     * @var string
-     */
-    private $secret;
-
     public function __construct()
     {
-        $this->database_url = config('services.firebase.database_url');
-        $this->secret = config('services.firebase.secret');
-    }
+        $requiredFields = ['project_id', 'client_id', 'client_email', 'private_key'];
+        $config = [];
+        foreach ($requiredFields as $field) {
+            $value = config('services.firebase.' . $field);
+            if (!isset($value)) {
+                throw new \Exception('Missing config `services.firebase.' . $field . '`');
+            }
+            if ($field === 'private_key') {
+                $value = str_replace('\\n', PHP_EOL, $value);
+            }
+            $config[$field] = $value;
+        }
 
-    public function setBaseURI($baseURI)
-    {
-        $this->send()->setBaseURI($baseURI);
-    }
+        $databaseURL = config('services.firebase.database_url');
+        $serviceAccount = ServiceAccount::fromArray($config);
 
-    public function send()
-    {
-        return new FirebaseLib($this->database_url, $this->secret);
+        $this->firebase = (new Factory)
+            ->withServiceAccount($serviceAccount)
+            ->withDatabaseUri($databaseURL)
+            ->create()->getDatabase();
     }
 
 
     /**
      * Fetch data from Firebase
      * @param string $path
-     * @param array $options
-     * @return array
+     * @return string
      */
-    public function get(string $path, array $options = [])
+    public function get(string $path)
     {
-        return $this->send()->get($path, $options);
+        return json_encode($this->firebase->getReference($path)->getValue());
     }
 
     /**
-     * Writing data into Firebase with a PUT request
+     * Writing data into Firebase
      * @param string $path
      * @param array $data
-     * @param array $options
-     * @return array
+     * @return string
      */
-    public function set(string $path, array $data, array $options = [])
+    public function set(string $path, array $data)
     {
-        return $this->send()->set($path, $data, $options);
+        return json_encode($this->firebase->getReference($path)->set($data)->getValue());
     }
 
     /**
-     * Updating data into Firebase with a PATH request
+     * Updating data into Firebase
      * @param string $path
      * @param array $data
-     * @param array $options
-     * @return array
+     * @return string
      */
-    public function update(string $path, array $data, array $options = [])
+    public function update(string $path, array $data)
     {
-        return $this->send()->update($path, $data, $options);
+        $updates = [$path => $data];
+
+        return json_encode($this->firebase->getReference($path)->update($updates)->getValue()[$path]);
     }
 
     /**
-     * Pushing data into Firebase with a POST request
+     * Pushing data into Firebase
      *
      * @param string $path
      * @param array $data
-     * @param array $options
-     * @return array
+     * @return string
      */
-    public function push(string $path, array $data, array $options = [])
+    public function push(string $path, array $data)
     {
-        return $this->send()->push($path, $data, $options);
+        return json_encode($this->firebase->getReference($path)->push($data)->getValue());
     }
 
     /**
      * Deletes data from Firebase
      * @param string $path
-     * @param array $options
-     * @return array
+     * @return string
      */
-    public function delete(string $path, array $options = [])
+    public function delete(string $path)
     {
-        return $this->send()->delete($path, $options);
+        return json_encode($this->firebase->getReference($path)->remove()->getValue());
     }
 }
